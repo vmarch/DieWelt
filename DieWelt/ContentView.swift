@@ -10,11 +10,9 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var dc:DataController = DataController()
     var body: some View {
-        
         NavigationView{
             ZStack(){
-                LinearGradient(gradient: Gradient(colors: [.blue,.white]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .edgesIgnoringSafeArea(.all)
+                
                 VStack{
                     if(dc.lookingAs == .grid){
                         Text("Create GridView")
@@ -25,30 +23,47 @@ struct ContentView: View {
                                 VStack(spacing: 8){
                                     Image(uiImage: ImageLoader().loadImageFromURL(str: article.image))
                                         .resizable()
-                                        .scaledToFit()
-                                        .frame(height: 350)
-                                        .padding(.vertical, 4)
+                                        .scaledToFill()
                                     
+                                        .padding(.vertical, 4)
+                                    HStack{
+                                       
+                                            Text("\(article.categorie)")
+                                                .fontWeight(.bold)
+                                                .font(.system(size: 16, weight: .medium))
+                                                .underline(true, color: .yellow)
+                                                .textCase(.uppercase)
+                                            
+                                                .foregroundColor(Color("BlueMarine"))
+                                               
+                                            
+                                    
+                                        
+                                        Spacer()
+                                        Text("\(Date().getDateAsString(string: article.published))")
+                                        
+                                        
+                                    }
                                     Text(article.headline)
-                                        .fontWeight(.semibold)
-                                        .lineLimit(1)
+                                        .fontWeight(.bold)
+                                        .font(.system(size: 26, weight: .medium))
+                                    //.lineLimit(1)
                                         .minimumScaleFactor(0.8)
                                     Text(article.subline)
                                         .font(.subheadline)
                                         .lineLimit(2)
                                         .minimumScaleFactor(0.7)
                                         .foregroundColor(.secondary)
+                                    Text(article.textmessage)
+                                        .lineLimit(8)
                                     
-                                    HStack{
-                                        Text("\(article.published)")
-                                        Spacer()
-                                        Text("\(article.categorie)")
-                                    }
                                 }
                                 
                             }
                             )
                             
+                        }.onAppear {
+                            self.dc.loadData()
                         }
                         
                     }

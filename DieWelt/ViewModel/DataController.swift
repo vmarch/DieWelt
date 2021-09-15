@@ -15,9 +15,12 @@ class DataController: ObservableObject{
     @Published var categorie: Categorie = .sport
     @Published var aData:[News] = []
     
-    init(){}
+    init(){
+        loadData()
+    }
 
     func loadData(){
+        print("dfghdkfhgkdfhgj")
         repository.loadDataFromServer(dc: self, categorie: categorie)
     }
     

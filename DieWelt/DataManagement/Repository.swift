@@ -24,6 +24,7 @@ class Repository{
                     let decodedJson = try JSONDecoder().decode([News].self, from: d)
                     
                     DispatchQueue.main.async {
+                        
                         dc.dataLoadingResponse(data: decodedJson)
                     }
                     

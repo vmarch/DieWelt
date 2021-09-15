@@ -7,5 +7,6 @@
 
 import Foundation
 struct News: Codable, Identifiable{
-    let id, headline, subline, source, textmessage, published, image, categorie: String
+    let id: Int
+    let headline, subline, source, textmessage, published, image, categorie: String
 }

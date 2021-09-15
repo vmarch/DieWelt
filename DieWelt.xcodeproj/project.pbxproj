@@ -36,6 +36,7 @@
 		3F2E088026F0EB4C005B4EB1 /* LookingAs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookingAs.swift; sourceTree = "<group>"; };
 		3F2E088226F0EB76005B4EB1 /* ViewSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSelector.swift; sourceTree = "<group>"; };
 		3F2E088426F0ED87005B4EB1 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		3F67883F26F1C0610001F388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FF651FB26F1406A00EE7ED4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		3FF651FD26F1407D00EE7ED4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3FF651FF26F145CE00EE7ED4 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -71,14 +72,15 @@
 		3F2E085C26F0DA59005B4EB1 /* DieWelt */ = {
 			isa = PBXGroup;
 			children = (
+				3F67883F26F1C0610001F388 /* Info.plist */,
+				3F2E087626F0E04D005B4EB1 /* IgnoreData */,
 				3F2E085D26F0DA59005B4EB1 /* DieWeltApp.swift */,
 				3F2E086126F0DA5B005B4EB1 /* Assets.xcassets */,
 				3F2E085F26F0DA59005B4EB1 /* ContentView.swift */,
-				3F2E087626F0E04D005B4EB1 /* IgnoreData */,
+				3F2E087226F0DDC2005B4EB1 /* ViewModel */,
 				3F2E087526F0DDE5005B4EB1 /* DataManagement */,
 				3F2E087426F0DDDA005B4EB1 /* Tools */,
 				3F2E087326F0DDD1005B4EB1 /* Models */,
-				3F2E087226F0DDC2005B4EB1 /* ViewModel */,
 				3F2E087126F0DDB6005B4EB1 /* Views */,
 				3F2E086326F0DA5B005B4EB1 /* Preview Content */,
 			);
@@ -368,6 +370,10 @@
 				DEVELOPMENT_TEAM = AD4RURV9JH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DieWelt/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = DieWelt;
+				INFOPLIST_KEY_CFBundleName = DieWelt;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -398,6 +404,10 @@
 				DEVELOPMENT_TEAM = AD4RURV9JH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DieWelt/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = DieWelt;
+				INFOPLIST_KEY_CFBundleName = DieWelt;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
