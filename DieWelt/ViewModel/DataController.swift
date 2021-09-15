@@ -13,7 +13,11 @@ class DataController: ObservableObject{
     @Published var viewSelector: ViewSelector = .main
     @Published var lookingAs: LookingAs = .list
     @Published var categorie: Categorie = .sport
-    @Published var aData:[News] = []
+    
+    private var aData:[News] = []
+    @Published var aDataFiltered:[News] = []
+    @Published var isSearchActive: Bool = false
+    @Published var searchText: String = ""
     
     init(){
         loadData()
@@ -27,5 +31,28 @@ class DataController: ObservableObject{
     func dataLoadingResponse(data: [News]){
         print(data)
         self.aData = data
+        filterData()
+    }
+    
+    func filterData(){
+        aDataFiltered = []
+        aDataFiltered = aData  
+        filterByTextInDownloadedList()
+        print("aDataFilteredList = \(aDataFiltered.count)")
+    }
+    
+    private func filterByTextInDownloadedList() {
+        
+        var tempFilteredList: [News] = []
+        if(searchText.count > 0){
+            for p in aDataFiltered{
+                if(p.headline.lowercased().contains(searchText.lowercased())){
+                    tempFilteredList.append(p)
+                }
+            }
+        }else{
+            tempFilteredList = aDataFiltered
+        }
+        aDataFiltered = tempFilteredList
     }
 }
