@@ -12,7 +12,19 @@ class DataController: ObservableObject{
     
     @Published var viewSelector: ViewSelector = .main
     @Published var lookingAs: LookingAs = .list
-    @Published var categorie: Categorie = .sport
+    @Published var categorieList: [String] = []
+    @Published var currentCategorie: String = ""
+    //politik
+    //reise
+    //sport
+    //kultur
+    //panorama
+    //register
+    //wirtschaft
+    //event
+    //auto
+    
+    
     
     private var aData:[News] = []
     @Published var aDataFiltered:[News] = []
@@ -24,19 +36,21 @@ class DataController: ObservableObject{
     }
 
     func loadData(){
-        print("dfghdkfhgkdfhgj")
-        repository.loadDataFromServer(dc: self, categorie: categorie)
+        print("data loading started")
+            repository.loadDataFromServer(dc: self, categorie: currentCategorie)
     }
     
     func dataLoadingResponse(data: [News]){
         print(data)
         self.aData = data
+        print("data loading finished")
         filterData()
     }
     
     func filterData(){
         aDataFiltered = []
-        aDataFiltered = aData  
+        aDataFiltered = aData
+        
         filterByTextInDownloadedList()
         print("aDataFilteredList = \(aDataFiltered.count)")
     }

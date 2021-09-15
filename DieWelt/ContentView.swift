@@ -17,8 +17,8 @@ struct ContentView: View {
         // this overrides everything you have set up earlier.
         coloredAppearance.configureWithTransparentBackground()
         //  coloredAppearance.backgroundColor = .green
-        coloredAppearance.titleTextAttributes = [.font : UIFont.systemFont(ofSize: 28),.foregroundColor : UIColor.white]
-        coloredAppearance.largeTitleTextAttributes = [.font : UIFont.systemFont(ofSize: 28),.foregroundColor: UIColor.black]
+        coloredAppearance.titleTextAttributes = [.font : UIFont.systemFont(ofSize: 28, weight: .bold),.foregroundColor : UIColor.white]
+        coloredAppearance.largeTitleTextAttributes = [.font : UIFont.systemFont(ofSize: 28, weight: .bold),.foregroundColor: UIColor.black]
         
         //In the following two lines you make sure that you apply the style for good
         UINavigationBar.appearance().standardAppearance = coloredAppearance
@@ -35,6 +35,18 @@ struct ContentView: View {
                 Color("BlueMarine").ignoresSafeArea()
                 
                 VStack(){
+                    
+                    ScrollView (.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(0..<10) { i in
+                                Text("Item \(i)")
+                                    .foregroundColor(Color.white)
+                                Divider().background(Color.white)
+                            }
+                        }
+                    }.frame(height: 36)
+                    
+                    
                     if(dc.isSearchActive){
                         SearchView(isSearchActive: $dc.isSearchActive, searchText: $dc.searchText.didSet(execute: { (search) in
                             self.dc.filterData()
@@ -47,16 +59,6 @@ struct ContentView: View {
                     if(dc.lookingAs == .grid){
                         Text("Create GridView")
                     }else{
-                        
-                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(0..<10) { i in
-                                    Text("Item \(i)")
-                                        .foregroundColor(Color.white)
-                                    Divider().background(Color.white)
-                                }
-                            }
-                        }.frame(height: 36)
                         
                         List(dc.aDataFiltered){ article in
                             NavigationLink(destination: DetailView(article: article), label: {
@@ -111,7 +113,7 @@ struct ContentView: View {
                         Image(systemName: "magnifyingglass")
                             .resizable()
                             .scaledToFit()
-                            .foregroundColor(.blue)
+                            .foregroundColor(.white)
                             .frame(height: 20)
                     }else{
                         Image(systemName: "magnifyingglass")

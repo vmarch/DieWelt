@@ -8,11 +8,26 @@
 import Foundation
 class Repository{
 
-    func loadDataFromServer(dc: DataController, categorie: Categorie){
+    func loadDataFromServer(dc: DataController, categorie: String){
         print ("load data")
         let url = URL(string: ConectData().testLoadingEndpoint)!
         print (url)
-        let dataTask = URLSession.shared.dataTask(with: url){
+                
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        var bodyData: String = "flag=true"
+    
+        if(categorie != ""){
+            print ("cat=\(categorie)")
+            bodyData = "cat=\(categorie)"
+        }else{
+            print ("cat=all")
+            bodyData = "cat=all"
+        }
+    
+        request.httpBody = bodyData.data(using: .utf8)
+        
+        let dataTask = URLSession.shared.dataTask(with: request){
             (data, response, error) in
             
             print (data!)
