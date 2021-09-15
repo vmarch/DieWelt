@@ -9,5 +9,4 @@ import Foundation
 enum LookingAs{
     case grid
     case list
-    case map
 }

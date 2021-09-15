@@ -22,6 +22,7 @@ class DataController: ObservableObject{
     }
     
     func dataLoadingResponse(data: [News]){
+        print(data)
         self.aData = data
     }
 }
