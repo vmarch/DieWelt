@@ -2,7 +2,7 @@
 //  SearchView.swift
 //  DieWelt
 //
-//  Created by Student on 15.09.21.
+//  Created by devtolife on 15.09.21.
 //
 
 import SwiftUI

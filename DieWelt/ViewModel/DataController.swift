@@ -2,7 +2,7 @@
 //  DataController.swift
 //  DieWelt
 //
-//  Created by Student on 14.09.21.
+//  Created by devtolife on 14.09.21.
 //
 
 import SwiftUI
@@ -37,7 +37,7 @@ class DataController: ObservableObject{
 
     func loadData(){
         print("data loading started")
-            repository.loadDataFromServer(dc: self, categorie: currentCategorie)
+            repository.loadNewsFromServer(dc: self, categorie: currentCategorie)
     }
     
     func dataLoadingResponse(data: [News]){

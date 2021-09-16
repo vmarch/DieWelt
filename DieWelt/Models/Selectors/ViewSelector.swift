@@ -2,7 +2,7 @@
 //  ViewSelector.swift
 //  DieWelt
 //
-//  Created by Student on 14.09.21.
+//  Created by devtolife on 14.09.21.
 //
 
 import Foundation
