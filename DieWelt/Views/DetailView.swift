@@ -10,7 +10,6 @@ struct DetailView: View {
 
     @State var article: News = News(id: 0, headline: "", subline: "", source: "", textmessage: "", published: "", image: "", categorie: "")
     
-    
     var body: some View {
         ZStack{
         Color("BlueMarine").ignoresSafeArea()
@@ -34,17 +33,21 @@ struct DetailView: View {
                         .minimumScaleFactor(0.7)
                         .foregroundColor(.secondary)
                     Spacer()
-                    //    Text("\(Date().getDateAsString(string: article.published))")
                     
+                    //Show Date in format: "dd.MM.yyyy". Example: 14.09.2021
+                   Text("\(Date().getDateAsString(string: article.published))")
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(.secondary)
                 }
                 Text(article.headline)
                     .fontWeight(.bold)
-                    .font(.system(size: 26, weight: .medium))
+                    .font(.system(size: 20, weight: .medium))
                 //.lineLimit(1)
                 
                 Text(article.textmessage)
-                    .fontWeight(.bold)
-                    .font(.system(size: 14, weight: .medium))
+            
+                    .font(.system(size: 16, weight: .medium))
+      
                 Spacer()
             }.padding()
                 .background(Color.white)

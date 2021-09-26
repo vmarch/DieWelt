@@ -14,22 +14,11 @@ class DataController: ObservableObject{
     @Published var lookingAs: LookingAs = .list
     @Published var categorieList: [String] = []
     @Published var currentCategorie: String = ""
-    //politik
-    //reise
-    //sport
-    //kultur
-    //panorama
-    //register
-    //wirtschaft
-    //event
-    //auto
-    
-    
-    
+ 
     private var aData:[News] = []
     @Published var aDataFiltered:[News] = []
     @Published var isSearchActive: Bool = false
-    @Published var searchText: String = ""
+    @Published var searchText: String = "" { didSet{ filterData() }}
     
     init(){
         loadData()

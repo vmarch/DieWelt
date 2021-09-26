@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var dc:DataController = DataController()
+    @EnvironmentObject var dc:DataController
     
     init() {
         // this is not the same as manipulating the proxy directly
@@ -30,7 +30,6 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView{
             ZStack{
                 Color("BlueMarine").ignoresSafeArea()
                 
@@ -46,11 +45,8 @@ struct ContentView: View {
                         }
                     }.frame(height: 36)
                     
-                    
                     if(dc.isSearchActive){
-                        SearchView(isSearchActive: $dc.isSearchActive, searchText: $dc.searchText.didSet(execute: { (search) in
-                            self.dc.filterData()
-                        }))
+                        SearchView()
                             .padding(.horizontal, 8)
                             .transition(.move(edge: .trailing))
                             .animation(.linear)
@@ -82,9 +78,7 @@ struct ContentView: View {
                                             .lineLimit(2)
                                             .minimumScaleFactor(0.7)
                                             .foregroundColor(.secondary)
-                                        Spacer()
-                                        //    Text("\(Date().getDateAsString(string: article.published))")
-                                        
+                                        Spacer()                                        
                                     }
                                     Text(article.headline)
                                         .fontWeight(.bold)
@@ -107,7 +101,7 @@ struct ContentView: View {
             .navigationBarItems(trailing:
                                     HStack{
                 Button(action: {
-                    self.dc.isSearchActive.toggle()
+                  self.dc.isSearchActive.toggle()
                 }, label: {
                     if(self.dc.searchText == ""){
                         Image(systemName: "magnifyingglass")
@@ -126,13 +120,15 @@ struct ContentView: View {
                 )
             }
             )
-        }  .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
-//
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        NavigationView{
+            ContentView()
+        }.environmentObject(DataController())
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+}

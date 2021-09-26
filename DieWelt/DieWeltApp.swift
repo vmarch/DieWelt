@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct DieWeltApp: App {
+    @StateObject var dc: DataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                ContentView()
+            }.environmentObject(dc)
+             .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

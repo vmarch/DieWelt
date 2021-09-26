@@ -10,9 +10,8 @@ class Repository{
 
     func loadNewsFromServer(dc: DataController, categorie: String){
         
-        
         NetworkService.fetch(categorie: categorie) { news in
-            
+            //getting [news] from completion just if it is available.
             DispatchQueue.main.async {
                 guard let news = news else{return}
                 dc.dataLoadingResponse(data: news)
